@@ -17,17 +17,18 @@ struct HNItem: Hashable {
     let title: String
     let score: Int
     
-    init?(json: JSON) {
-        guard
-            let id = json["id"].int,
-            let by = json["by"].string,
-            let title = json["title"].string,
-            let score = json["score"].int
-        else { return nil }
-        self.id = id
-        self.by = by
-        self.title = title
-        self.score = score
+    init(json: JSON) {
+        self.id = json["id"].intValue
+        self.by = json["by"].stringValue
+        self.title = json["title"].stringValue
+        self.score = json["score"].intValue
+    }
+    
+    init() {
+        self.id = -1
+        self.by = "Placeholder Author"
+        self.title = "Placeholder Title"
+        self.score = -1
     }
     
     func hash(into hasher: inout Hasher) {
@@ -44,7 +45,7 @@ func getItems(completion:@escaping (Array<HNItem>) -> (), count: Int = 10) {
         case .failure(let error):
             print(error)
         case .success(let value):
-            let best = Array(JSON(value).arrayValue.map{$0.intValue}[0...count])
+            let best = Array(JSON(value).arrayValue.map{$0.intValue}[0...count - 1])
             let group = DispatchGroup()
             var items = Array<HNItem>()
             
@@ -57,7 +58,7 @@ func getItems(completion:@escaping (Array<HNItem>) -> (), count: Int = 10) {
                         print("Error fetching item \(id):", error)
                     case .success(let value):
                         print("Fetched item \(id)")
-                        items.append(HNItem(json: JSON(value))!)
+                        items.append(HNItem(json: JSON(value)))
                         group.leave()
                     }
                 }
@@ -71,27 +72,36 @@ func getItems(completion:@escaping (Array<HNItem>) -> (), count: Int = 10) {
     }
 }
 
+func getItem(completion:@escaping (HNItem) -> ()) {
+    AF.request("https://hacker-news.firebaseio.com/v0/item/\(1).json").responseJSON {
+        switch $0.result {
+        case .failure(let error):
+            print("Error fetching item \(1):", error)
+        case .success(let value):
+            print("Fetched item \(1)")
+            completion(HNItem(json: JSON(value)))
+        }
+    }
+}
+
 struct ContentView: View {
     @State var items = Array<HNItem>()
-    
+    @State var otherItem = HNItem()
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
-                if items.count == 0 {
-                    Text("it's loading").font(.title)
-                } else {
-                    ForEach(items, id: \.self ) {item in
-                        Text(item.title)
-                            .font(.title)
-                            .fontWeight(.bold)
-                    }
-                }
+
+        if items.count == 0 {
+            Text("it's loading").font(.title)
+        }
+        List{
+            ForEach(items, id: \.id ) {item in
+                Link(item.title, destination: URL(string: "https://news.ycombinator.com/item?id=\(String(item.id))")!)
             }
-            .onAppear() {
-                getItems { (items) in
-                    self.items = items
-                }
-            }
+        }
+        .onAppear() {
+            getItems(completion:  { (items) in
+                self.items = items
+            }, count: 2)
+            getItem {self.otherItem = $0}
         }
     }
 }

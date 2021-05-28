@@ -21,6 +21,7 @@
 		176EB9D8265B488B00C54BD3 /* Benuse.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 176EB9D4265B488100C54BD3 /* Benuse.intentdefinition */; };
 		176EB9D9265B488B00C54BD3 /* Benuse.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 176EB9D4265B488100C54BD3 /* Benuse.intentdefinition */; };
 		176EB9DC265B488B00C54BD3 /* BenuseExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 176EB9CB265B488100C54BD3 /* BenuseExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		17BCBA8F26614B1F0049AABF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176EB9A7265B484500C54BD3 /* ContentView.swift */; };
 		6F4C851760BA35C0D033EA29 /* Pods_Benuse__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FE925CB038B3E72A885ECE7 /* Pods_Benuse__iOS_.framework */; };
 		94314D5C5A4CC6B8AD33F770 /* Pods_Benuse__macOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE75FD0FFAE320DCBC8E8419 /* Pods_Benuse__macOS_.framework */; };
 		C8D91477656B85699B6E95F9 /* Pods_BenuseExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFE902210F096FF9F1F89A97 /* Pods_BenuseExtension.framework */; };
@@ -453,6 +454,7 @@
 			files = (
 				176EB9D8265B488B00C54BD3 /* Benuse.intentdefinition in Sources */,
 				176EB9D3265B488100C54BD3 /* Benuse.swift in Sources */,
+				17BCBA8F26614B1F0049AABF /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

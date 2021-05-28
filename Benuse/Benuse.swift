@@ -1,69 +1,62 @@
-//
-//  Benuse.swift
-//  Benuse
-//
-//  Created by Jordan Mann on 5/23/21.
-//
-
 import WidgetKit
 import SwiftUI
-import Intents
 
-struct Provider: IntentTimelineProvider { 
+struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationIntent())
+        var items = Array<HNItem>()
+        items.append(HNItem())
+        items.append(HNItem())
+        return SimpleEntry(date: Date(), items: items)
     }
-
-    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), configuration: configuration)
-        completion(entry)
+    
+    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> Void) {
+        var items = Array<HNItem>()
+        items.append(HNItem())
+        items.append(HNItem())
+        completion(SimpleEntry(date: Date(), items: items))
     }
-
-    func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
+    
+    func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
         let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration)
-            entries.append(entry)
-        }
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-        completion(timeline)
+        let refreshDate = Calendar.current.date(byAdding: .minute, value: 30, to: currentDate)!
+        
+        getItems(completion: {
+                    let entry = SimpleEntry(date: currentDate, items: $0)
+                    let timeline = Timeline(entries: [entry], policy: .after(refreshDate))
+                    completion(timeline)},
+                 count: 2)
     }
 }
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let configuration: ConfigurationIntent
+    let items: Array<HNItem>
 }
 
-struct BenuseEntryView : View {
+struct HNItemView : View {
     var entry: Provider.Entry
-
+    
     var body: some View {
-        Text(entry.date, style: .time)
+        ZStack {
+            Color(.white)
+            VStack{
+                ForEach(entry.items, id: \.id ) {item in
+                    Link(item.title, destination: URL(string: "benuse://item?id=\(String(item.id))")!)
+                }
+            }
+        }
     }
 }
 
 @main
 struct Benuse: Widget {
     let kind: String = "Benuse"
-
+    
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
-            BenuseEntryView(entry: entry)
+        StaticConfiguration(kind: kind, provider: Provider()) { entry in
+            HNItemView(entry: entry)
         }
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")
-    }
-}
-
-struct Benuse_Previews: PreviewProvider {
-    static var previews: some View {
-        BenuseEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

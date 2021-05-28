@@ -11,7 +11,10 @@ import SwiftUI
 struct BenuseApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().onOpenURL(perform: { url in
+                print("Deep link! url is \(url)")
+                UIApplication.shared.open(URL(string: "https://news.ycombinator.com/item?\(url.query!)")!)
+            })
         }
     }
 }
