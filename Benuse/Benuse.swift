@@ -38,7 +38,6 @@ struct HNItemView : View {
     
     var body: some View {
         ZStack {
-            Color(.white)
             VStack{
                 ForEach(entry.items, id: \.id ) {item in
                     Link(item.title, destination: URL(string: "benuse://item?id=\(String(item.id))")!)

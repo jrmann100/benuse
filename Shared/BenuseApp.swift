@@ -9,11 +9,18 @@ import SwiftUI
 
 @main
 struct BenuseApp: App {
+    @State var deepURL: URL? = nil
     var body: some Scene {
         WindowGroup {
-            ContentView().onOpenURL(perform: { url in
-                print("Deep link! url is \(url)")
-                UIApplication.shared.open(URL(string: "https://news.ycombinator.com/item?\(url.query!)")!)
+            ContentView(deepURL: $deepURL).onOpenURL(perform: { url in
+                print("thas deep")
+                deepURL = URL(string: "https://news.ycombinator.com/item?\(url.query!)")!
+//                UIApplication.shared.open(
+//                    URL(string: "https://news.ycombinator.com/item?\(url.query!)")!,
+//                    completionHandler: {
+//                        print("opened deep link success? \($0)")
+//                    })
+                
             })
         }
     }

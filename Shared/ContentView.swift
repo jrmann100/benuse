@@ -9,6 +9,7 @@ import SwiftUI
 import Foundation
 import Alamofire
 import SwiftyJSON
+import SafariServices
 
 struct HNItem: Hashable {
     
@@ -85,23 +86,48 @@ func getItem(completion:@escaping (HNItem) -> ()) {
 }
 
 struct ContentView: View {
-    @State var items = Array<HNItem>()
-    @State var otherItem = HNItem()
-    var body: some View {
+    @Binding var deepURL: URL?
+    
+    var showDeep: Binding<Bool> {
+        Binding(get: {
+            self.deepURL != nil
+        }) { _ in
 
-        if items.count == 0 {
-            Text("it's loading").font(.title)
-        }
-        List{
-            ForEach(items, id: \.id ) {item in
-                Link(item.title, destination: URL(string: "https://news.ycombinator.com/item?id=\(String(item.id))")!)
-            }
-        }
-        .onAppear() {
-            getItems(completion:  { (items) in
-                self.items = items
-            }, count: 2)
-            getItem {self.otherItem = $0}
         }
     }
+    
+    @State var items = Array<HNItem>()
+    var body: some View {
+        Group {
+            if items.count == 0 {
+                Text("it's loading").font(.title)
+            } else {
+                List{
+                    ForEach(items, id: \.id ) {item in
+                        Link(item.title, destination: URL(string: "https://news.ycombinator.com/item?id=\(String(item.id))")!)
+                    }
+                }}
+        }
+        .onAppear() {
+            getItems(completion:  {
+                items = $0
+            }, count: 2)
+        }.sheet(isPresented: showDeep, onDismiss: {deepURL = nil}) {
+            SafariView(url:deepURL ?? URL(string: "https://jrmann.com")!)
+        }
+    }
+}
+
+struct SafariView: UIViewControllerRepresentable {
+
+    let url: URL
+
+    func makeUIViewController(context: UIViewControllerRepresentableContext<SafariView>) -> SFSafariViewController {
+        return SFSafariViewController(url: url)
+    }
+
+    func updateUIViewController(_ uiViewController: SFSafariViewController, context: UIViewControllerRepresentableContext<SafariView>) {
+
+    }
+
 }

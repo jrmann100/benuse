@@ -3,17 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1709A642266099E500A5DBA2 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1709A641266099E500A5DBA2 /* Launch Screen.storyboard */; };
 		176EB9B9265B484900C54BD3 /* BenuseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176EB9A6265B484500C54BD3 /* BenuseApp.swift */; };
-		176EB9BA265B484900C54BD3 /* BenuseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176EB9A6265B484500C54BD3 /* BenuseApp.swift */; };
 		176EB9BB265B484900C54BD3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176EB9A7265B484500C54BD3 /* ContentView.swift */; };
-		176EB9BC265B484900C54BD3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176EB9A7265B484500C54BD3 /* ContentView.swift */; };
 		176EB9BD265B484900C54BD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 176EB9A8265B484800C54BD3 /* Assets.xcassets */; };
-		176EB9BE265B484900C54BD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 176EB9A8265B484800C54BD3 /* Assets.xcassets */; };
 		176EB9CE265B488100C54BD3 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 176EB9CD265B488100C54BD3 /* WidgetKit.framework */; };
 		176EB9D0265B488100C54BD3 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 176EB9CF265B488100C54BD3 /* SwiftUI.framework */; };
 		176EB9D3265B488100C54BD3 /* Benuse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176EB9D2265B488100C54BD3 /* Benuse.swift */; };
@@ -21,10 +18,12 @@
 		176EB9D8265B488B00C54BD3 /* Benuse.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 176EB9D4265B488100C54BD3 /* Benuse.intentdefinition */; };
 		176EB9D9265B488B00C54BD3 /* Benuse.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 176EB9D4265B488100C54BD3 /* Benuse.intentdefinition */; };
 		176EB9DC265B488B00C54BD3 /* BenuseExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 176EB9CB265B488100C54BD3 /* BenuseExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		179074852662310E00C5FB6F /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 179074842662310E00C5FB6F /* BetterSafariView */; };
+		179074882662314700C5FB6F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 179074872662314700C5FB6F /* Alamofire */; };
+		1790748B2662315800C5FB6F /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 1790748A2662315800C5FB6F /* SwiftyJSON */; };
+		1790748D2662321100C5FB6F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1790748C2662321100C5FB6F /* Alamofire */; };
+		1790748F2662321400C5FB6F /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 1790748E2662321400C5FB6F /* SwiftyJSON */; };
 		17BCBA8F26614B1F0049AABF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176EB9A7265B484500C54BD3 /* ContentView.swift */; };
-		6F4C851760BA35C0D033EA29 /* Pods_Benuse__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FE925CB038B3E72A885ECE7 /* Pods_Benuse__iOS_.framework */; };
-		94314D5C5A4CC6B8AD33F770 /* Pods_Benuse__macOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE75FD0FFAE320DCBC8E8419 /* Pods_Benuse__macOS_.framework */; };
-		C8D91477656B85699B6E95F9 /* Pods_BenuseExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFE902210F096FF9F1F89A97 /* Pods_BenuseExtension.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,9 +57,6 @@
 		176EB9A8265B484800C54BD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		176EB9AD265B484800C54BD3 /* Benuse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Benuse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		176EB9B0265B484900C54BD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		176EB9B5265B484900C54BD3 /* Benuse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Benuse.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		176EB9B7265B484900C54BD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		176EB9B8265B484900C54BD3 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		176EB9CB265B488100C54BD3 /* BenuseExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BenuseExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		176EB9CD265B488100C54BD3 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		176EB9CF265B488100C54BD3 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -68,15 +64,6 @@
 		176EB9D4265B488100C54BD3 /* Benuse.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Benuse.intentdefinition; sourceTree = "<group>"; };
 		176EB9D5265B488B00C54BD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		176EB9D7265B488B00C54BD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4141F58968B00A0AC5C173F3 /* Pods-Benuse (iOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Benuse (iOS).release.xcconfig"; path = "Target Support Files/Pods-Benuse (iOS)/Pods-Benuse (iOS).release.xcconfig"; sourceTree = "<group>"; };
-		4FE925CB038B3E72A885ECE7 /* Pods_Benuse__iOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Benuse__iOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		59C09E31BBE6C45CA062C585 /* Pods-BenuseExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BenuseExtension.release.xcconfig"; path = "Target Support Files/Pods-BenuseExtension/Pods-BenuseExtension.release.xcconfig"; sourceTree = "<group>"; };
-		AFE902210F096FF9F1F89A97 /* Pods_BenuseExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BenuseExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C4C7C0118F3796FC0BD65C03 /* Pods-Benuse (iOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Benuse (iOS).debug.xcconfig"; path = "Target Support Files/Pods-Benuse (iOS)/Pods-Benuse (iOS).debug.xcconfig"; sourceTree = "<group>"; };
-		DDADA3539B3691523A65235D /* Pods-BenuseExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BenuseExtension.debug.xcconfig"; path = "Target Support Files/Pods-BenuseExtension/Pods-BenuseExtension.debug.xcconfig"; sourceTree = "<group>"; };
-		DE75FD0FFAE320DCBC8E8419 /* Pods_Benuse__macOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Benuse__macOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DEE2D5BB80F916F9CB2A9EF0 /* Pods-Benuse (macOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Benuse (macOS).release.xcconfig"; path = "Target Support Files/Pods-Benuse (macOS)/Pods-Benuse (macOS).release.xcconfig"; sourceTree = "<group>"; };
-		E27BBA9E7DA9497415133CC6 /* Pods-Benuse (macOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Benuse (macOS).debug.xcconfig"; path = "Target Support Files/Pods-Benuse (macOS)/Pods-Benuse (macOS).debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,15 +71,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F4C851760BA35C0D033EA29 /* Pods_Benuse__iOS_.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		176EB9B2265B484900C54BD3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				94314D5C5A4CC6B8AD33F770 /* Pods_Benuse__macOS_.framework in Frameworks */,
+				179074882662314700C5FB6F /* Alamofire in Frameworks */,
+				1790748B2662315800C5FB6F /* SwiftyJSON in Frameworks */,
+				179074852662310E00C5FB6F /* BetterSafariView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,9 +81,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1790748D2662321100C5FB6F /* Alamofire in Frameworks */,
 				176EB9D0265B488100C54BD3 /* SwiftUI.framework in Frameworks */,
+				1790748F2662321400C5FB6F /* SwiftyJSON in Frameworks */,
 				176EB9CE265B488100C54BD3 /* WidgetKit.framework in Frameworks */,
-				C8D91477656B85699B6E95F9 /* Pods_BenuseExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,11 +96,9 @@
 			children = (
 				176EB9A5265B484500C54BD3 /* Shared */,
 				176EB9AF265B484900C54BD3 /* iOS */,
-				176EB9B6265B484900C54BD3 /* macOS */,
 				176EB9D1265B488100C54BD3 /* Benuse */,
 				176EB9CC265B488100C54BD3 /* Frameworks */,
 				176EB9AE265B484800C54BD3 /* Products */,
-				F5C72271A77CADC2936A2FCB /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,7 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				176EB9AD265B484800C54BD3 /* Benuse.app */,
-				176EB9B5265B484900C54BD3 /* Benuse.app */,
 				176EB9CB265B488100C54BD3 /* BenuseExtension.appex */,
 			);
 			name = Products;
@@ -151,23 +130,11 @@
 			path = iOS;
 			sourceTree = "<group>";
 		};
-		176EB9B6265B484900C54BD3 /* macOS */ = {
-			isa = PBXGroup;
-			children = (
-				176EB9B7265B484900C54BD3 /* Info.plist */,
-				176EB9B8265B484900C54BD3 /* macOS.entitlements */,
-			);
-			path = macOS;
-			sourceTree = "<group>";
-		};
 		176EB9CC265B488100C54BD3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				176EB9CD265B488100C54BD3 /* WidgetKit.framework */,
 				176EB9CF265B488100C54BD3 /* SwiftUI.framework */,
-				4FE925CB038B3E72A885ECE7 /* Pods_Benuse__iOS_.framework */,
-				DE75FD0FFAE320DCBC8E8419 /* Pods_Benuse__macOS_.framework */,
-				AFE902210F096FF9F1F89A97 /* Pods_BenuseExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -183,19 +150,6 @@
 			path = Benuse;
 			sourceTree = "<group>";
 		};
-		F5C72271A77CADC2936A2FCB /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C4C7C0118F3796FC0BD65C03 /* Pods-Benuse (iOS).debug.xcconfig */,
-				4141F58968B00A0AC5C173F3 /* Pods-Benuse (iOS).release.xcconfig */,
-				E27BBA9E7DA9497415133CC6 /* Pods-Benuse (macOS).debug.xcconfig */,
-				DEE2D5BB80F916F9CB2A9EF0 /* Pods-Benuse (macOS).release.xcconfig */,
-				DDADA3539B3691523A65235D /* Pods-BenuseExtension.debug.xcconfig */,
-				59C09E31BBE6C45CA062C585 /* Pods-BenuseExtension.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -203,12 +157,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 176EB9C1265B484900C54BD3 /* Build configuration list for PBXNativeTarget "Benuse (iOS)" */;
 			buildPhases = (
-				D4C508F2C50615D08BF574A8 /* [CP] Check Pods Manifest.lock */,
 				176EB9A9265B484800C54BD3 /* Sources */,
 				176EB9AA265B484800C54BD3 /* Frameworks */,
 				176EB9AB265B484800C54BD3 /* Resources */,
 				176EB9E0265B488B00C54BD3 /* Embed App Extensions */,
-				D43BE4E6E1A9AAA4C0ABC286 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -216,34 +168,19 @@
 				176EB9DB265B488B00C54BD3 /* PBXTargetDependency */,
 			);
 			name = "Benuse (iOS)";
+			packageProductDependencies = (
+				179074842662310E00C5FB6F /* BetterSafariView */,
+				179074872662314700C5FB6F /* Alamofire */,
+				1790748A2662315800C5FB6F /* SwiftyJSON */,
+			);
 			productName = "Benuse (iOS)";
 			productReference = 176EB9AD265B484800C54BD3 /* Benuse.app */;
-			productType = "com.apple.product-type.application";
-		};
-		176EB9B4265B484900C54BD3 /* Benuse (macOS) */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 176EB9C4265B484900C54BD3 /* Build configuration list for PBXNativeTarget "Benuse (macOS)" */;
-			buildPhases = (
-				514D5ADFD6F58C2A7CF5F15F /* [CP] Check Pods Manifest.lock */,
-				176EB9B1265B484900C54BD3 /* Sources */,
-				176EB9B2265B484900C54BD3 /* Frameworks */,
-				176EB9B3265B484900C54BD3 /* Resources */,
-				FE891A5DF0DF06DC0F8D87FD /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Benuse (macOS)";
-			productName = "Benuse (macOS)";
-			productReference = 176EB9B5265B484900C54BD3 /* Benuse.app */;
 			productType = "com.apple.product-type.application";
 		};
 		176EB9CA265B488100C54BD3 /* BenuseExtension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 176EB9DD265B488B00C54BD3 /* Build configuration list for PBXNativeTarget "BenuseExtension" */;
 			buildPhases = (
-				5E1A75524BF5B630226FB856 /* [CP] Check Pods Manifest.lock */,
 				176EB9C7265B488100C54BD3 /* Sources */,
 				176EB9C8265B488100C54BD3 /* Frameworks */,
 				176EB9C9265B488100C54BD3 /* Resources */,
@@ -253,6 +190,10 @@
 			dependencies = (
 			);
 			name = BenuseExtension;
+			packageProductDependencies = (
+				1790748C2662321100C5FB6F /* Alamofire */,
+				1790748E2662321400C5FB6F /* SwiftyJSON */,
+			);
 			productName = BenuseExtension;
 			productReference = 176EB9CB265B488100C54BD3 /* BenuseExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -269,9 +210,6 @@
 					176EB9AC265B484800C54BD3 = {
 						CreatedOnToolsVersion = 12.5;
 					};
-					176EB9B4265B484900C54BD3 = {
-						CreatedOnToolsVersion = 12.5;
-					};
 					176EB9CA265B488100C54BD3 = {
 						CreatedOnToolsVersion = 12.5;
 					};
@@ -286,12 +224,16 @@
 				Base,
 			);
 			mainGroup = 176EB9A0265B484400C54BD3;
+			packageReferences = (
+				179074832662310E00C5FB6F /* XCRemoteSwiftPackageReference "BetterSafariView" */,
+				179074862662314700C5FB6F /* XCRemoteSwiftPackageReference "Alamofire" */,
+				179074892662315800C5FB6F /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+			);
 			productRefGroup = 176EB9AE265B484800C54BD3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				176EB9AC265B484800C54BD3 /* Benuse (iOS) */,
-				176EB9B4265B484900C54BD3 /* Benuse (macOS) */,
 				176EB9CA265B488100C54BD3 /* BenuseExtension */,
 			);
 		};
@@ -307,14 +249,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		176EB9B3265B484900C54BD3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				176EB9BE265B484900C54BD3 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		176EB9C9265B488100C54BD3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -325,109 +259,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		514D5ADFD6F58C2A7CF5F15F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Benuse (macOS)-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5E1A75524BF5B630226FB856 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-BenuseExtension-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D43BE4E6E1A9AAA4C0ABC286 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Benuse (iOS)/Pods-Benuse (iOS)-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Benuse (iOS)/Pods-Benuse (iOS)-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Benuse (iOS)/Pods-Benuse (iOS)-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D4C508F2C50615D08BF574A8 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Benuse (iOS)-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FE891A5DF0DF06DC0F8D87FD /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Benuse (macOS)/Pods-Benuse (macOS)-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Benuse (macOS)/Pods-Benuse (macOS)-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Benuse (macOS)/Pods-Benuse (macOS)-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		176EB9A9265B484800C54BD3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -436,15 +267,6 @@
 				176EB9BB265B484900C54BD3 /* ContentView.swift in Sources */,
 				176EB9D9265B488B00C54BD3 /* Benuse.intentdefinition in Sources */,
 				176EB9B9265B484900C54BD3 /* BenuseApp.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		176EB9B1265B484900C54BD3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				176EB9BC265B484900C54BD3 /* ContentView.swift in Sources */,
-				176EB9BA265B484900C54BD3 /* BenuseApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,7 +404,6 @@
 		};
 		176EB9C2265B484900C54BD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C4C7C0118F3796FC0BD65C03 /* Pods-Benuse (iOS).debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -606,7 +427,6 @@
 		};
 		176EB9C3265B484900C54BD3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4141F58968B00A0AC5C173F3 /* Pods-Benuse (iOS).release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -629,59 +449,8 @@
 			};
 			name = Release;
 		};
-		176EB9C5265B484900C54BD3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E27BBA9E7DA9497415133CC6 /* Pods-Benuse (macOS).debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = ZWNYM87BB9;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = macOS/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jordanmann.Benuse;
-				PRODUCT_NAME = Benuse;
-				SDKROOT = macosx;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		176EB9C6265B484900C54BD3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = DEE2D5BB80F916F9CB2A9EF0 /* Pods-Benuse (macOS).release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = ZWNYM87BB9;
-				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = macOS/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jordanmann.Benuse;
-				PRODUCT_NAME = Benuse;
-				SDKROOT = macosx;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 		176EB9DE265B488B00C54BD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DDADA3539B3691523A65235D /* Pods-BenuseExtension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
@@ -705,7 +474,6 @@
 		};
 		176EB9DF265B488B00C54BD3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 59C09E31BBE6C45CA062C585 /* Pods-BenuseExtension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
@@ -749,15 +517,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		176EB9C4265B484900C54BD3 /* Build configuration list for PBXNativeTarget "Benuse (macOS)" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				176EB9C5265B484900C54BD3 /* Debug */,
-				176EB9C6265B484900C54BD3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		176EB9DD265B488B00C54BD3 /* Build configuration list for PBXNativeTarget "BenuseExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -768,6 +527,61 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		179074832662310E00C5FB6F /* XCRemoteSwiftPackageReference "BetterSafariView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stleamist/BetterSafariView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.1;
+			};
+		};
+		179074862662314700C5FB6F /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.3;
+			};
+		};
+		179074892662315800C5FB6F /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		179074842662310E00C5FB6F /* BetterSafariView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 179074832662310E00C5FB6F /* XCRemoteSwiftPackageReference "BetterSafariView" */;
+			productName = BetterSafariView;
+		};
+		179074872662314700C5FB6F /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 179074862662314700C5FB6F /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		1790748A2662315800C5FB6F /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 179074892662315800C5FB6F /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+		1790748C2662321100C5FB6F /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 179074862662314700C5FB6F /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		1790748E2662321400C5FB6F /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 179074892662315800C5FB6F /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 176EB9A1265B484500C54BD3 /* Project object */;
 }
