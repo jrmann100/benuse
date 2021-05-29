@@ -9,21 +9,29 @@ import SwiftUI
 
 @main
 struct BenuseApp: App {
-    @State var deepURL: URL? = nil
+    @State var isLoading = false
     var body: some Scene {
         WindowGroup {
-            ContentView(deepURL: $deepURL)
-            /*Text(isLoading ? "Opening article..." : "You can use the widget now.")*/.onOpenURL(perform: { url in
-                /*UIApplication.shared.open(
-                    URL(string: "https://news.ycombinator.com/item?\(url.query!)")!,
-                    completionHandler: {
-                        print("opened deep link success? \($0)")
-                        sleep(1)
-                        isLoading = false
-                    })*/
-                deepURL = URL(string: "https://news.ycombinator.com/item?\(url.query!)")!
-                
-            })
+            VStack {
+                if (isLoading){
+                    ProgressView().scaleEffect(x: 2, y: 2, anchor: .center).frame(minHeight: 50)
+                } else {
+                    Image(systemName: "apps.iphone.badge.plus")
+                        .font(.system(size: 50))
+                }
+                Spacer().frame(height: 20)
+                Text(isLoading ? "Opening article..." : "Add the Benuse widget\nto your home screen.").onOpenURL(perform: { url in
+                    print("Thas deep:", url.absoluteString)
+                    isLoading = true
+                    UIApplication.shared.open(
+                        url,
+                        completionHandler: {
+                            print("opened deep link success? \($0)")
+                            isLoading = false
+                        })
+                    
+                }).multilineTextAlignment(.center).font(.system(.title))
+            }
         }
     }
 }

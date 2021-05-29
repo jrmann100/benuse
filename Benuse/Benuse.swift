@@ -40,7 +40,8 @@ struct HNItemView : View {
         ZStack {
             VStack{
                 ForEach(entry.items, id: \.id ) {item in
-                    Link(item.title, destination: URL(string: "benuse://item?id=\(String(item.id))")!)
+                                       Link(item.title, destination: URL(string: "https://news.ycombinator.com/item?id=\(String(item.id))")!)
+
                 }
             }
         }

@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1709A642266099E500A5DBA2 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1709A641266099E500A5DBA2 /* Launch Screen.storyboard */; };
+		175916292662E165009E884D /* HNUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175916282662E165009E884D /* HNUtil.swift */; };
+		1759162A2662E165009E884D /* HNUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175916282662E165009E884D /* HNUtil.swift */; };
 		176EB9B9265B484900C54BD3 /* BenuseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176EB9A6265B484500C54BD3 /* BenuseApp.swift */; };
-		176EB9BB265B484900C54BD3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176EB9A7265B484500C54BD3 /* ContentView.swift */; };
 		176EB9BD265B484900C54BD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 176EB9A8265B484800C54BD3 /* Assets.xcassets */; };
 		176EB9CE265B488100C54BD3 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 176EB9CD265B488100C54BD3 /* WidgetKit.framework */; };
 		176EB9D0265B488100C54BD3 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 176EB9CF265B488100C54BD3 /* SwiftUI.framework */; };
@@ -22,7 +23,6 @@
 		1790748B2662315800C5FB6F /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 1790748A2662315800C5FB6F /* SwiftyJSON */; };
 		1790748D2662321100C5FB6F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1790748C2662321100C5FB6F /* Alamofire */; };
 		1790748F2662321400C5FB6F /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 1790748E2662321400C5FB6F /* SwiftyJSON */; };
-		17BCBA8F26614B1F0049AABF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176EB9A7265B484500C54BD3 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,8 +51,8 @@
 
 /* Begin PBXFileReference section */
 		1709A641266099E500A5DBA2 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		175916282662E165009E884D /* HNUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HNUtil.swift; sourceTree = "<group>"; };
 		176EB9A6265B484500C54BD3 /* BenuseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BenuseApp.swift; sourceTree = "<group>"; };
-		176EB9A7265B484500C54BD3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		176EB9A8265B484800C54BD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		176EB9AD265B484800C54BD3 /* Benuse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Benuse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		176EB9B0265B484900C54BD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				176EB9A6265B484500C54BD3 /* BenuseApp.swift */,
-				176EB9A7265B484500C54BD3 /* ContentView.swift */,
+				175916282662E165009E884D /* HNUtil.swift */,
 				176EB9A8265B484800C54BD3 /* Assets.xcassets */,
 				1709A641266099E500A5DBA2 /* Launch Screen.storyboard */,
 			);
@@ -260,7 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				176EB9BB265B484900C54BD3 /* ContentView.swift in Sources */,
+				175916292662E165009E884D /* HNUtil.swift in Sources */,
 				176EB9D9265B488B00C54BD3 /* Benuse.intentdefinition in Sources */,
 				176EB9B9265B484900C54BD3 /* BenuseApp.swift in Sources */,
 			);
@@ -270,9 +270,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1759162A2662E165009E884D /* HNUtil.swift in Sources */,
 				176EB9D8265B488B00C54BD3 /* Benuse.intentdefinition in Sources */,
 				176EB9D3265B488100C54BD3 /* Benuse.swift in Sources */,
-				17BCBA8F26614B1F0049AABF /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
