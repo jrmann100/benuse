@@ -18,7 +18,6 @@
 		176EB9D8265B488B00C54BD3 /* Benuse.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 176EB9D4265B488100C54BD3 /* Benuse.intentdefinition */; };
 		176EB9D9265B488B00C54BD3 /* Benuse.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 176EB9D4265B488100C54BD3 /* Benuse.intentdefinition */; };
 		176EB9DC265B488B00C54BD3 /* BenuseExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 176EB9CB265B488100C54BD3 /* BenuseExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		179074852662310E00C5FB6F /* BetterSafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 179074842662310E00C5FB6F /* BetterSafariView */; };
 		179074882662314700C5FB6F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 179074872662314700C5FB6F /* Alamofire */; };
 		1790748B2662315800C5FB6F /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 1790748A2662315800C5FB6F /* SwiftyJSON */; };
 		1790748D2662321100C5FB6F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1790748C2662321100C5FB6F /* Alamofire */; };
@@ -73,7 +72,6 @@
 			files = (
 				179074882662314700C5FB6F /* Alamofire in Frameworks */,
 				1790748B2662315800C5FB6F /* SwiftyJSON in Frameworks */,
-				179074852662310E00C5FB6F /* BetterSafariView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,7 +167,6 @@
 			);
 			name = "Benuse (iOS)";
 			packageProductDependencies = (
-				179074842662310E00C5FB6F /* BetterSafariView */,
 				179074872662314700C5FB6F /* Alamofire */,
 				1790748A2662315800C5FB6F /* SwiftyJSON */,
 			);
@@ -225,7 +222,6 @@
 			);
 			mainGroup = 176EB9A0265B484400C54BD3;
 			packageReferences = (
-				179074832662310E00C5FB6F /* XCRemoteSwiftPackageReference "BetterSafariView" */,
 				179074862662314700C5FB6F /* XCRemoteSwiftPackageReference "Alamofire" */,
 				179074892662315800C5FB6F /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
@@ -529,14 +525,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		179074832662310E00C5FB6F /* XCRemoteSwiftPackageReference "BetterSafariView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/stleamist/BetterSafariView.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.3.1;
-			};
-		};
 		179074862662314700C5FB6F /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -556,11 +544,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		179074842662310E00C5FB6F /* BetterSafariView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 179074832662310E00C5FB6F /* XCRemoteSwiftPackageReference "BetterSafariView" */;
-			productName = BetterSafariView;
-		};
 		179074872662314700C5FB6F /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 179074862662314700C5FB6F /* XCRemoteSwiftPackageReference "Alamofire" */;

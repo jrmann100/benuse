@@ -73,30 +73,17 @@ func getItems(completion:@escaping (Array<HNItem>) -> (), count: Int = 10) {
     }
 }
 
-func getItem(completion:@escaping (HNItem) -> ()) {
-    AF.request("https://hacker-news.firebaseio.com/v0/item/\(1).json").responseJSON {
-        switch $0.result {
-        case .failure(let error):
-            print("Error fetching item \(1):", error)
-        case .success(let value):
-            print("Fetched item \(1)")
-            completion(HNItem(json: JSON(value)))
-        }
-    }
-}
-
 struct ContentView: View {
+    @State var otherItem = HNItem()
+    @State var items = Array<HNItem>()
     @Binding var deepURL: URL?
-    
-    var showDeep: Binding<Bool> {
+    var showPopup: Binding<Bool> {
         Binding(get: {
-            self.deepURL != nil
-        }) { _ in
-
+        deepURL != nil
+        }) {update in
+            
         }
     }
-    
-    @State var items = Array<HNItem>()
     var body: some View {
         Group {
             if items.count == 0 {
@@ -112,8 +99,18 @@ struct ContentView: View {
             getItems(completion:  {
                 items = $0
             }, count: 2)
-        }.sheet(isPresented: showDeep, onDismiss: {deepURL = nil}) {
-            SafariView(url:deepURL ?? URL(string: "https://jrmann.com")!)
+        }/*.fullScreenCover(isPresented: $isLoading) {
+            VStack {
+                Text("Opening Item...")
+                
+            }
+            .foregroundColor(.white)
+            .frame(maxWidth: .infinity,
+                   maxHeight: .infinity)
+            .background(Color.blue)
+            .ignoresSafeArea(edges: .all)
+        }*/.sheet(isPresented: showPopup) {
+            SafariView(url:deepURL!/*URL(string: "https://news.ycombinator.com/item?id=\(String(0))")!*/)
         }
     }
 }
