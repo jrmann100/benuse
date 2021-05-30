@@ -78,3 +78,7 @@ func getItem(completion:@escaping (HNItem) -> (), id: Int) {
         }
     }
 }
+
+func urlForItem(id: Int) -> String {
+    "https://news.ycombinator.com/item?id=\(id)"
+}
