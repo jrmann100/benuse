@@ -40,8 +40,23 @@ struct HNItemView : View {
         ZStack {
             VStack{
                 ForEach(entry.items, id: \.id ) {item in
-                                       Link(item.title, destination: URL(string: "https://news.ycombinator.com/item?id=\(String(item.id))")!)
-
+                    HStack {
+                        Link(destination: URL(string: item.url ?? "https://jrmann.com")!) {
+                            HStack {
+                                Group {
+                                    Image(systemName: "arrow.up")
+                                    Text(String(item.score))
+                                }.foregroundColor(.gray)
+                                Text(item.title).frame(maxWidth: .infinity)
+                            }
+                        }.onTapGesture(perform: {
+                            //                            .foregroundColor(.gray)
+                        })
+                        Link(destination: URL(string: "https://news.ycombinator.com/item?id=\(String(item.id))")!) {
+                            Image(systemName: "text.bubble.fill")
+                                .font(.system(size: 30))
+                        }
+                    }.padding()
                 }
             }
         }

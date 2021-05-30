@@ -15,19 +15,23 @@ struct HNItem: Hashable {
     let by: String
     let title: String
     let score: Int
+    let url: String?
     
     init(json: JSON) {
         self.id = json["id"].intValue
         self.by = json["by"].stringValue
         self.title = json["title"].stringValue
         self.score = json["score"].intValue
+        self.url = json["url"].stringValue
+        
     }
     
     init() {
-        self.id = -1
-        self.by = "Placeholder Author"
-        self.title = "Placeholder Title"
-        self.score = -1
+        self.id = 0
+        self.by = "jrmann100"
+        self.title = "Hacker News Article"
+        self.score = 1
+        self.url = nil
     }
     
     func hash(into hasher: inout Hasher) {
@@ -50,17 +54,10 @@ func getItems(completion:@escaping (Array<HNItem>) -> (), count: Int = 10) {
             
             best.forEach { id in
                 group.enter()
-                
-                AF.request("https://hacker-news.firebaseio.com/v0/item/\(id).json").responseJSON {
-                    switch $0.result {
-                    case .failure(let error):
-                        print("Error fetching item \(id):", error)
-                    case .success(let value):
-                        print("Fetched item \(id)")
-                        items.append(HNItem(json: JSON(value)))
-                        group.leave()
-                    }
-                }
+                getItem( completion: {item in
+                    items.append(item)
+                    group.leave()
+                }, id: id)
             }
             
             group.notify(queue: .main) {
@@ -71,3 +68,13 @@ func getItems(completion:@escaping (Array<HNItem>) -> (), count: Int = 10) {
     }
 }
 
+func getItem(completion:@escaping (HNItem) -> (), id: Int) {
+    AF.request("https://hacker-news.firebaseio.com/v0/item/\(id).json").responseJSON {
+        switch $0.result {
+        case .failure(let error):
+            print("Error fetching item \(id):", error)
+        case .success(let value):
+            completion(HNItem(json: JSON(value)))
+        }
+    }
+}

@@ -27,6 +27,7 @@ struct BenuseApp: App {
                         url,
                         completionHandler: {
                             print("opened deep link success? \($0)")
+                            sleep(1)
                             isLoading = false
                         })
                     
