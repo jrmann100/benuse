@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "OpenGraph",
+        "repositoryURL": "https://github.com/satoshi-takano/OpenGraph/",
+        "state": {
+          "branch": null,
+          "revision": "679483ef5040c2be10c5ecf0b99251a6c1d7a368",
+          "version": "1.3.1"
+        }
+      },
+      {
         "package": "SwiftyJSON",
         "repositoryURL": "https://github.com/SwiftyJSON/SwiftyJSON.git",
         "state": {

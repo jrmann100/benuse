@@ -10,6 +10,11 @@
 		1708650A2663561F005E0C9D /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170865092663561F005E0C9D /* File.swift */; };
 		1708650C266356BA005E0C9D /* Benuse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1708650B266356BA005E0C9D /* Benuse.swift */; };
 		1709A642266099E500A5DBA2 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1709A641266099E500A5DBA2 /* Launch Screen.storyboard */; };
+		175474352664160700E8B12F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 175474342664160700E8B12F /* Alamofire */; };
+		175474392664162800E8B12F /* OpenGraph in Frameworks */ = {isa = PBXBuildFile; productRef = 175474382664162800E8B12F /* OpenGraph */; };
+		1754743B26641AD100E8B12F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1754743A26641AD100E8B12F /* Alamofire */; };
+		1754743D26641AD300E8B12F /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 1754743C26641AD300E8B12F /* SwiftyJSON */; };
+		1754743F26641AD600E8B12F /* OpenGraph in Frameworks */ = {isa = PBXBuildFile; productRef = 1754743E26641AD600E8B12F /* OpenGraph */; };
 		175916292662E165009E884D /* HNUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175916282662E165009E884D /* HNUtil.swift */; };
 		1759162A2662E165009E884D /* HNUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175916282662E165009E884D /* HNUtil.swift */; };
 		176EB9B9265B484900C54BD3 /* BenuseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176EB9A6265B484500C54BD3 /* BenuseApp.swift */; };
@@ -20,10 +25,7 @@
 		176EB9D8265B488B00C54BD3 /* Benuse.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 176EB9D4265B488100C54BD3 /* Benuse.intentdefinition */; };
 		176EB9D9265B488B00C54BD3 /* Benuse.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 176EB9D4265B488100C54BD3 /* Benuse.intentdefinition */; };
 		176EB9DC265B488B00C54BD3 /* BenuseExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 176EB9CB265B488100C54BD3 /* BenuseExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		179074882662314700C5FB6F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 179074872662314700C5FB6F /* Alamofire */; };
 		1790748B2662315800C5FB6F /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 1790748A2662315800C5FB6F /* SwiftyJSON */; };
-		1790748D2662321100C5FB6F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1790748C2662321100C5FB6F /* Alamofire */; };
-		1790748F2662321400C5FB6F /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 1790748E2662321400C5FB6F /* SwiftyJSON */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,8 +74,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				179074882662314700C5FB6F /* Alamofire in Frameworks */,
 				1790748B2662315800C5FB6F /* SwiftyJSON in Frameworks */,
+				175474352664160700E8B12F /* Alamofire in Frameworks */,
+				175474392664162800E8B12F /* OpenGraph in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,10 +84,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1790748D2662321100C5FB6F /* Alamofire in Frameworks */,
+				1754743B26641AD100E8B12F /* Alamofire in Frameworks */,
 				176EB9D0265B488100C54BD3 /* SwiftUI.framework in Frameworks */,
-				1790748F2662321400C5FB6F /* SwiftyJSON in Frameworks */,
+				1754743D26641AD300E8B12F /* SwiftyJSON in Frameworks */,
 				176EB9CE265B488100C54BD3 /* WidgetKit.framework in Frameworks */,
+				1754743F26641AD600E8B12F /* OpenGraph in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,8 +174,9 @@
 			);
 			name = "Benuse (iOS)";
 			packageProductDependencies = (
-				179074872662314700C5FB6F /* Alamofire */,
 				1790748A2662315800C5FB6F /* SwiftyJSON */,
+				175474342664160700E8B12F /* Alamofire */,
+				175474382664162800E8B12F /* OpenGraph */,
 			);
 			productName = "Benuse (iOS)";
 			productReference = 176EB9AD265B484800C54BD3 /* Benuse.app */;
@@ -191,8 +196,9 @@
 			);
 			name = BenuseExtension;
 			packageProductDependencies = (
-				1790748C2662321100C5FB6F /* Alamofire */,
-				1790748E2662321400C5FB6F /* SwiftyJSON */,
+				1754743A26641AD100E8B12F /* Alamofire */,
+				1754743C26641AD300E8B12F /* SwiftyJSON */,
+				1754743E26641AD600E8B12F /* OpenGraph */,
 			);
 			productName = BenuseExtension;
 			productReference = 176EB9CB265B488100C54BD3 /* BenuseExtension.appex */;
@@ -227,6 +233,7 @@
 			packageReferences = (
 				179074862662314700C5FB6F /* XCRemoteSwiftPackageReference "Alamofire" */,
 				179074892662315800C5FB6F /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				17547431266415D400E8B12F /* XCRemoteSwiftPackageReference "OpenGraph" */,
 			);
 			productRefGroup = 176EB9AE265B484800C54BD3 /* Products */;
 			projectDirPath = "";
@@ -529,6 +536,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		17547431266415D400E8B12F /* XCRemoteSwiftPackageReference "OpenGraph" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/satoshi-takano/OpenGraph/";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.1;
+			};
+		};
 		179074862662314700C5FB6F /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -548,22 +563,32 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		179074872662314700C5FB6F /* Alamofire */ = {
+		175474342664160700E8B12F /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 179074862662314700C5FB6F /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		1790748A2662315800C5FB6F /* SwiftyJSON */ = {
+		175474382664162800E8B12F /* OpenGraph */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17547431266415D400E8B12F /* XCRemoteSwiftPackageReference "OpenGraph" */;
+			productName = OpenGraph;
+		};
+		1754743A26641AD100E8B12F /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 179074862662314700C5FB6F /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		1754743C26641AD300E8B12F /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 179074892662315800C5FB6F /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
 		};
-		1790748C2662321100C5FB6F /* Alamofire */ = {
+		1754743E26641AD600E8B12F /* OpenGraph */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 179074862662314700C5FB6F /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
+			package = 17547431266415D400E8B12F /* XCRemoteSwiftPackageReference "OpenGraph" */;
+			productName = OpenGraph;
 		};
-		1790748E2662321400C5FB6F /* SwiftyJSON */ = {
+		1790748A2662315800C5FB6F /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 179074892662315800C5FB6F /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;

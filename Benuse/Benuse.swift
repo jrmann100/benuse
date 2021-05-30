@@ -1,6 +1,27 @@
 import WidgetKit
 import SwiftUI
 
+// https://www.themobileentity.com/home/how-to-fetch-image-from-url-with-swiftui-the-easy-way
+extension Image {
+    
+    func data(url:URL) -> Self {
+        
+        if let data = try? Data(contentsOf: url) {
+            
+            return Image(uiImage: UIImage(data: data)!)
+                
+                .resizable()
+            
+        }
+        
+        return self
+            
+            .resizable()
+        
+    }
+    
+}
+
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
         var items = Array<HNItem>()
@@ -44,7 +65,62 @@ struct SimpleEntry: TimelineEntry {
     let items: Array<HNItem>
 }
 
-struct HNItemView : View {
+struct SmallItemView: View {
+    let item: HNItem
+    let colorScheme: ColorScheme
+    var body: some View { ZStack {
+        Color(UIColor.systemGray5).edgesIgnoringSafeArea(.all)
+        if item.image != nil {
+            Image(systemName: "newspaper").data(url: item.image!)
+        }
+        VStack(alignment: .leading){
+            HStack {
+                Image(systemName: "arrow.up")
+                Text(String(item.score))
+            }.foregroundColor(.gray)
+            Spacer()
+            Text(item.title)
+        }.padding()
+    }
+    .widgetURL(URL(string: urlForItem(id: item.id))!)
+    }
+}
+
+struct ItemView: View {
+    let item: HNItem
+    let colorScheme: ColorScheme
+    var body: some View {
+        ZStack {
+            if item.image != nil {
+                Image(systemName: "newspaper").data(url: item.image!).scaledToFill().frame(
+                    minWidth: 0,
+                    maxWidth: .infinity,
+                    minHeight: 0,
+                    maxHeight: .infinity,
+                    alignment: .center).clipped().opacity(0.5)
+            }
+            HStack {
+                Link(destination: item.url) {
+                    HStack {
+                        Group {
+                            Image(systemName: "arrow.up")
+                            Text(String(item.score))
+                        }.foregroundColor(colorScheme == .dark ? Color(UIColor.lightGray) : Color(UIColor.darkGray))
+                        Text(item.title).frame(maxWidth: .infinity)
+                    }
+                }.onTapGesture(perform: {
+                    // Todo: gray out visited links (could shuffle, but might want comments)
+                })
+                Link(destination: URL(string: urlForItem(id: item.id))!) {
+                    Image(systemName: "text.bubble.fill")
+                        .font(.system(size: 30))
+                }
+            }.padding()
+        }
+    }
+}
+
+struct ItemsView : View {
     var entry: Provider.Entry
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.widgetFamily) var widgetFamily
@@ -52,19 +128,10 @@ struct HNItemView : View {
     var body: some View {
         // Todo: in .systemLarge, load top articles and
         // Todo: test "show/etc HN" links
-        if (widgetFamily == .systemSmall) {
-            ZStack {
-                Color(UIColor.systemGray5).edgesIgnoringSafeArea(.all)
-                VStack(alignment: .leading){
-                    HStack {
-                    Image(systemName: "arrow.up")
-                    Text(String(entry.items[0].score))
-                    }.foregroundColor(.gray)
-                    Spacer()
-                    Text(entry.items[0].title)
-                }.padding()
-            }
-            .widgetURL(URL(string: urlForItem(id: entry.items[0].id))!)
+        // Todo: translucency is not currently possible
+        //       (it worked in Today widgets, so we'll see)
+        if widgetFamily == .systemSmall {
+            SmallItemView(item: entry.items[0], colorScheme: colorScheme)
         } else {
             ZStack {
                 // Todo: header with title
@@ -72,23 +139,7 @@ struct HNItemView : View {
                 VStack {
                     ForEach(entry.items, id: \.id ) {item in
                         // Todo: domain name
-                        HStack {
-                            Link(destination: URL(string: item.url ?? urlForItem(id: item.id))!) {
-                                HStack {
-                                    Group {
-                                        Image(systemName: "arrow.up")
-                                        Text(String(item.score))
-                                    }.foregroundColor(.gray)
-                                    Text(item.title).frame(maxWidth: .infinity)
-                                }
-                            }.onTapGesture(perform: {
-                                // Todo: gray out visited links (could shuffle, but might want comments)
-                            })
-                            Link(destination: URL(string: urlForItem(id: item.id))!) {
-                                Image(systemName: "text.bubble.fill")
-                                    .font(.system(size: 30))
-                            }
-                        }.padding()
+                        ItemView(item: item, colorScheme: colorScheme)
                     }
                 }
             }
@@ -102,7 +153,7 @@ struct Benuse: Widget {
     
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
-            HNItemView(entry: entry)
+            ItemsView(entry: entry)
         }
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")

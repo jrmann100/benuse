@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import OpenGraph
 
 struct HNItem: Hashable {
     
@@ -15,15 +16,18 @@ struct HNItem: Hashable {
     let by: String
     let title: String
     let score: Int
-    let url: String?
+    let url: URL
+    let site: String
+    let image: URL?
     
-    init(json: JSON) {
+    init(json: JSON, site: String? = nil, image: URL? = nil) {
         self.id = json["id"].intValue
         self.by = json["by"].stringValue
         self.title = json["title"].stringValue
         self.score = json["score"].intValue
-        self.url = json["url"].stringValue
-        
+        self.url = URL(string: json["url"].exists() ? json["url"].stringValue : urlForItem(id: id))!
+        self.site = site ?? "Hacker News"
+        self.image = image
     }
     
     init() {
@@ -31,7 +35,9 @@ struct HNItem: Hashable {
         self.by = "jrmann100"
         self.title = "Hacker News Article"
         self.score = 1
-        self.url = nil
+        self.url = URL(string: "https://jrmann.com")!
+        self.site = "Jordan Mann"
+        self.image = nil
     }
     
     func hash(into hasher: inout Hasher) {
@@ -74,7 +80,29 @@ func getItem(completion:@escaping (HNItem) -> (), id: Int) {
         case .failure(let error):
             print("Error fetching item \(id):", error)
         case .success(let value):
-            completion(HNItem(json: JSON(value)))
+            let json = JSON(value)
+            var site = "Hacker News"
+            var image: URL? = nil
+            if json["url"].exists() {
+                OpenGraph.fetch(url: URL(string: json["url"].stringValue)!) { result in
+                    switch result {
+                    case .success(let og):
+                        if og[.image] != nil {
+                            image = URL(string: og[.image]!)!
+                        }
+                        if og[.siteName] != nil {
+                            site = og[.siteName]!
+                        } else if json["url"].exists() {
+                            site = URL(string: json["url"].stringValue)!.host!
+                        }
+                        completion(HNItem(json: JSON(value), site: site, image: image))
+                    case .failure(_):
+                        completion(HNItem(json: JSON(value), site: URL(string: json["url"].stringValue)?.host))
+                    }
+                }
+            } else {
+                completion(HNItem(json: JSON(value)))
+            }
         }
     }
 }
