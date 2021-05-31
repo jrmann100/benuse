@@ -76,15 +76,17 @@ struct SmallItemView: View {
                 maxWidth: .infinity,
                 minHeight: 0,
                 maxHeight: .infinity,
-                alignment: .center).clipped().opacity(0.5)
+                alignment: .center).clipped().opacity(0.4)
         }
         VStack(alignment: .leading){
             HStack {
                 Image(systemName: "arrow.up")
                 Text(String(item.score))
-            }.foregroundColor(.gray).blendMode(.screen)
+            }.opacity(0.8)
             Spacer()
             Text(item.title)
+            Spacer()
+            Text(item.site).font(.system(size: 12, weight: .semibold))
         }.padding()
     }
     .widgetURL(URL(string: urlForItem(id: item.id))!)
@@ -107,14 +109,14 @@ struct ItemView: View {
             HStack {
                 Link(destination: item.url) {
                     VStack(alignment: .leading) {
-                        Text(item.site).font(.system(size: 12, weight: .semibold))
+                        Text(item.site).font(.system(size: 13, weight: .semibold))
                         Spacer().frame(maxHeight: 5)
                         HStack {
                             Group {
                                 Image(systemName: "arrow.up")
                                 Text(String(item.score))
-                            }.opacity(0.8).font(.system(size: 13, weight: .bold, design: .rounded))
-                            Text(item.title).frame(maxWidth: .infinity).fixedSize(horizontal: false, vertical: true).lineLimit(3).font(.system(size: 12, weight: .bold)) // does lineLimit matter?
+                            }.opacity(0.8).font(.system(size: 13))
+                            Text(item.title).frame(maxWidth: .infinity).fixedSize(horizontal: false, vertical: true).lineLimit(3).font(.system(size: 14, weight: .bold)) // does lineLimit matter?
                         }
                     }.onTapGesture(perform: {
                         // Todo: gray out visited links (could shuffle, but might want comments)
@@ -124,7 +126,7 @@ struct ItemView: View {
                             .font(.system(size: 30))
                     }
                 }
-            }.padding()
+            }.frame(maxHeight: 35).padding()
         }
     }
 }
@@ -145,7 +147,10 @@ struct ItemsView : View {
             ZStack {
                 // Todo: header with title
                 Color(UIColor.systemGray5).edgesIgnoringSafeArea(.all)
-                VStack {
+                VStack(alignment: .leading) {
+                    if (widgetFamily == .systemLarge) {
+                        Text("Hacker News").foregroundColor(.orange).font(.system(size: 17, weight: .heavy)).padding(EdgeInsets(top: 15, leading: 15, bottom: 5, trailing: 10))
+                    }
                     ForEach(entry.items, id: \.self) {item in
                         // Todo: domain name
                         ItemView(item: item, colorScheme: colorScheme)
@@ -158,13 +163,12 @@ struct ItemsView : View {
 
 @main
 struct Benuse: Widget {
-    let kind: String = "Benuse"
     
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider()) { entry in
+        StaticConfiguration(kind: "com.benuse.hacker-news", provider: Provider()) { entry in
             ItemsView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Hacker News")
+        .description("Displays today's best articles.")
     }
 }

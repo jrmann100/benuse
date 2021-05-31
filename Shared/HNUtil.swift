@@ -37,7 +37,7 @@ struct HNItem: Hashable {
         self.score = 203
         self.url = URL(string: "https://jrmann.com")!
         self.site = "Jordan's Blog"
-        self.image = nil
+        self.image = URL(string: "https://images.saymedia-content.com/.image/t_share/MTc2Mjg0OTI2Mzc3ODYyMzM0/reading-newspaper-as-a-habit.jpg")!
     }
     
     func hash(into hasher: inout Hasher) {
