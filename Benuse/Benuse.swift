@@ -71,13 +71,18 @@ struct SmallItemView: View {
     var body: some View { ZStack {
         Color(UIColor.systemGray5).edgesIgnoringSafeArea(.all)
         if item.image != nil {
-            Image(systemName: "newspaper").data(url: item.image!)
+            Image(systemName: "newspaper").data(url: item.image!).scaledToFill().frame(
+                minWidth: 0,
+                maxWidth: .infinity,
+                minHeight: 0,
+                maxHeight: .infinity,
+                alignment: .center).clipped().opacity(0.5)
         }
         VStack(alignment: .leading){
             HStack {
                 Image(systemName: "arrow.up")
                 Text(String(item.score))
-            }.foregroundColor(.gray)
+            }.foregroundColor(.gray).blendMode(.screen)
             Spacer()
             Text(item.title)
         }.padding()
@@ -101,19 +106,23 @@ struct ItemView: View {
             }
             HStack {
                 Link(destination: item.url) {
-                    HStack {
-                        Group {
-                            Image(systemName: "arrow.up")
-                            Text(String(item.score))
-                        }.foregroundColor(colorScheme == .dark ? Color(UIColor.lightGray) : Color(UIColor.darkGray))
-                        Text(item.title).frame(maxWidth: .infinity)
+                    VStack(alignment: .leading) {
+                        Text(item.site).font(.system(size: 12, weight: .semibold))
+                        Spacer().frame(maxHeight: 5)
+                        HStack {
+                            Group {
+                                Image(systemName: "arrow.up")
+                                Text(String(item.score))
+                            }.opacity(0.8).font(.system(size: 13, weight: .bold, design: .rounded))
+                            Text(item.title).frame(maxWidth: .infinity).fixedSize(horizontal: false, vertical: true).lineLimit(3).font(.system(size: 12, weight: .bold)) // does lineLimit matter?
+                        }
+                    }.onTapGesture(perform: {
+                        // Todo: gray out visited links (could shuffle, but might want comments)
+                    })
+                    Link(destination: URL(string: urlForItem(id: item.id))!) {
+                        Image(systemName: "text.bubble.fill")
+                            .font(.system(size: 30))
                     }
-                }.onTapGesture(perform: {
-                    // Todo: gray out visited links (could shuffle, but might want comments)
-                })
-                Link(destination: URL(string: urlForItem(id: item.id))!) {
-                    Image(systemName: "text.bubble.fill")
-                        .font(.system(size: 30))
                 }
             }.padding()
         }
@@ -137,7 +146,7 @@ struct ItemsView : View {
                 // Todo: header with title
                 Color(UIColor.systemGray5).edgesIgnoringSafeArea(.all)
                 VStack {
-                    ForEach(entry.items, id: \.id ) {item in
+                    ForEach(entry.items, id: \.self) {item in
                         // Todo: domain name
                         ItemView(item: item, colorScheme: colorScheme)
                     }

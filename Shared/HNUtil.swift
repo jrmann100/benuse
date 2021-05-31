@@ -33,10 +33,10 @@ struct HNItem: Hashable {
     init() {
         self.id = 0
         self.by = "jrmann100"
-        self.title = "Hacker News Article"
-        self.score = 1
+        self.title = "Benuse: iOS Widget Enhances Mobile HN Experience."
+        self.score = 203
         self.url = URL(string: "https://jrmann.com")!
-        self.site = "Jordan Mann"
+        self.site = "Jordan's Blog"
         self.image = nil
     }
     
