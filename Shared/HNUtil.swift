@@ -6,107 +6,99 @@
 //
 
 import Foundation
-import Alamofire
-import SwiftyJSON
 import OpenGraph
 
-struct HNItem: Hashable {
-    
-    let id: Int
-    let by: String
-    let title: String
-    let score: Int
-    let url: URL
+import Foundation
+
+enum HNAPIType: String, Codable {
+    case job
+    case story
+    case comment
+    case poll
+    case pollopt
+}
+
+struct HNAPIStory: Codable, Identifiable, Hashable {
+    let id: Int // The story's unique id.
+    let type: HNAPIType
+    let by: String // The username of the story's author.
+    let time: Int // Creation date of the story, in Unix Time.
+    let text: String? // The story text. HTML.
+    let kids: [Int]? // The ids of the story's comments, in ranked display order.
+    let url: String? // The URL of the story.
+    let score: Int // The story's score.
+    let title: String // The title of the story. HTML.
+    let descendants: Int // The total comment count.
+}
+
+struct HNStory: Hashable {
+    static func == (lhs: HNStory, rhs: HNStory) -> Bool {
+        return lhs.id == rhs.id
+    }
+
+    let _item: HNAPIStory
+    var id: Int { _item.id }
+    var score: Int { _item.score }
+    var title: String { _item.title }
+    var url: URL? { _item.url != nil ? URL(string: _item.url!)! : nil }
     let site: String
     let image: URL?
-    
-    init(json: JSON, site: String? = nil, image: URL? = nil) {
-        self.id = json["id"].intValue
-        self.by = json["by"].stringValue
-        self.title = json["title"].stringValue
-        self.score = json["score"].intValue
-        self.url = URL(string: json["url"].exists() ? json["url"].stringValue : urlForItem(id: id))!
-        self.site = site ?? "Hacker News"
-        self.image = image
-    }
-    
-    init() {
-        self.id = 0
-        self.by = "jrmann100"
-        self.title = "Benuse: iOS Widget Enhances Mobile HN Experience."
-        self.score = 203
-        self.url = URL(string: "https://jrmann.com")!
-        self.site = "Jordan's Blog"
-        self.image = URL(string: "https://images.saymedia-content.com/.image/t_share/MTc2Mjg0OTI2Mzc3ODYyMzM0/reading-newspaper-as-a-habit.jpg")!
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
 }
 
-func getItems(completion:@escaping (Array<HNItem>) -> (), count: Int = 10) {
-    print("starting request")
-    AF.request("https://hacker-news.firebaseio.com/v0/topstories.json").responseJSON { response in
-        print("got response");
-        
-        switch response.result {
-        case .failure(let error):
-            print(error)
-        case .success(let value):
-            let best = Array(JSON(value).arrayValue.map{$0.intValue}[0...count - 1])
-            let group = DispatchGroup()
-            var items = Array<HNItem>()
-            
-            best.forEach { id in
-                group.enter()
-                getItem( completion: {item in
-                    items.append(item)
-                    group.leave()
-                }, id: id)
-            }
-            
-            group.notify(queue: .main) {
-                print("Finished all requests.")
-                completion(items)
-            }
+func getStory(storyID: Int, completion: @escaping (HNAPIStory) -> ()) {
+    let url = URL(string: "https://hacker-news.firebaseio.com/v0/item/\(storyID).json")!
+    URLSession.shared.dataTask(with: url) { data, _, _ in
+        print("now I got the story \(storyID)")
+        let story = try! JSONDecoder().decode(HNAPIStory.self, from: data!)
+        guard story.type ~= .story else {
+            print("Error: API item type is not a string!")
+            return // will not complete... how to throw past?
         }
-    }
+        DispatchQueue.main.async { completion(story) }
+    }.resume()
 }
 
-func getItem(completion:@escaping (HNItem) -> (), id: Int) {
-    AF.request("https://hacker-news.firebaseio.com/v0/item/\(id).json").responseJSON {
-        switch $0.result {
-        case .failure(let error):
-            print("Error fetching item \(id):", error)
-        case .success(let value):
-            let json = JSON(value)
-            var site = "Hacker News"
-            var image: URL? = nil
-            if json["url"].exists() {
-                OpenGraph.fetch(url: URL(string: json["url"].stringValue)!) { result in
-                    switch result {
-                    case .success(let og):
-                        if og[.image] != nil {
-                            image = URL(string: og[.image]!)!
-                        }
-                        if og[.siteName] != nil {
-                            site = og[.siteName]!
-                        } else if json["url"].exists() {
-                            site = URL(string: json["url"].stringValue)!.host!
-                        }
-                        completion(HNItem(json: JSON(value), site: site, image: image))
-                    case .failure(_):
-                        completion(HNItem(json: JSON(value), site: URL(string: json["url"].stringValue)?.host))
-                    }
+func createStory(storyID: Int, completion: @escaping (HNStory) -> ()) {
+    var image: URL?
+    var site = "Hacker News"
+    getStory(storyID: storyID) { apiStory in
+        if apiStory.url != nil {
+            OpenGraph.fetch(url: URL(string: apiStory.url!)!) { res in
+                guard case let .success(og) = res else { return }
+                if og[.image] != nil {
+                    image = URL(string: og[.image]!)!
                 }
-            } else {
-                completion(HNItem(json: JSON(value)))
+                if og[.siteName] != nil {
+                    site = og[.siteName]!
+                } else if apiStory.url != nil {
+                    site = URL(string: apiStory.url!)!.host!
+                }
+                DispatchQueue.main.async { completion(HNStory(_item: apiStory, site: site, image: image)) }
             }
+        } else {
+            DispatchQueue.main.async { completion(HNStory(_item: apiStory, site: site, image: image)) }
         }
     }
 }
 
-func urlForItem(id: Int) -> String {
-    "https://news.ycombinator.com/item?id=\(id)"
+func getItems(completion: @escaping ([HNStory]) -> (), count: Int = 10) {
+    let url = URL(string: "https://hacker-news.firebaseio.com/v0/topstories.json")!
+    URLSession.shared.dataTask(with: url) { data, _, _ in
+        let storyIDs = (try! JSONDecoder().decode([Int].self, from: data!))[0 ... count - 1]
+        var stories = [HNStory]()
+        let initStories = DispatchGroup()
+
+        storyIDs.forEach { storyID in
+            initStories.enter()
+            createStory(storyID: storyID) { story in
+                stories.append(story)
+                initStories.leave()
+            }
+        }
+
+        initStories.notify(queue: .main) {
+            print("Collected stories.")
+            DispatchQueue.main.async { completion(stories) }
+        }
+    }.resume()
 }
