@@ -7,19 +7,48 @@
 
 import SwiftUI
 import WebView
+import WebKit
 
 func goHome() {
     UIControl().sendAction(#selector(NSXPCConnection.suspend),
                            to: UIApplication.shared, for: nil)
 }
 
+class WKNavD: NSObject, WKNavigationDelegate {
+    func webView(_: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        print("going?")
+        // todo: parse into and open benuse deep links
+        if navigationAction.navigationType == .linkActivated  {
+            if let url = navigationAction.request.url, true {
+                // todo: make customizable
+                print("whoosh", url.absoluteString)
+                UIApplication.shared.open(url)
+                decisionHandler(.cancel)
+            }
+        } else {
+            decisionHandler(.allow)
+        }
+    }
+    func webView(_: WKWebView, didStartProvisionalNavigation: WKNavigation!){
+        print("connecting...");
+    }
+    func webView(_: WKWebView, didCommit: WKNavigation!){
+        print("loading...");
+    }
+    func webView(_: WKWebView, didFinish: WKNavigation!){
+        print("loaded!");
+    }
+}
+
 @main
 struct BenuseApp: App {
-    @State var id: String? // should this be replaced with a generic boolean?
+    @State var home: Bool = true // should this be replaced with a generic boolean?
     @State var pane: HNPane = .story
     @State var hide: HNPane? = nil
     @StateObject var storyWVS = WebViewStore()
     @StateObject var commentsWVS = WebViewStore()
+    @State var storyNavD = WKNavD()
+    @State var commentsNavD = WKNavD()
     var currentURL: URL? {
         switch hide {
         case nil: return pane ~= .story ? storyWVS.url : commentsWVS.url
@@ -30,15 +59,15 @@ struct BenuseApp: App {
     
     func deepLink(deepLink: URL) { // might need .async() for everything??
         print("Launching", deepLink.absoluteString)
+        print("host is", deepLink.host!, deepLink.path)
         if deepLink.host! == "home" {
             hide = .comments
             pane = .story
-            storyWVS.webView.load(URLRequest(url: URL(string: "https://news.ycombinator.com/\(deepLink.path)")!))
-            return
+            storyWVS.webView.load(URLRequest(url: URL(string: "https://news.ycombinator.com\(deepLink.path)")!))
         }
         else if deepLink.host! == "story" {
             let options = URLComponents(string: deepLink.absoluteString)!.queryItems!
-            id = options.first(where: {$0.name == "id"})!.value
+            let id = options.first(where: {$0.name == "id"})!.value
             let someURL = options.first(where: {$0.name == "url"})?.value
             if someURL != nil {
                 storyWVS.webView.load(URLRequest(url: URL(string: someURL!.removingPercentEncoding!)!))
@@ -66,6 +95,7 @@ struct BenuseApp: App {
                 commentsWVS.webView.load(URLRequest(url: URL(string: "https://news.ycombinator.com/item?id=\(id!)")!))
             }
         }
+        return home = false
     }
     
     struct BottomMenuView: View {
@@ -87,7 +117,6 @@ struct BenuseApp: App {
         
         @Binding var pane: HNPane
         @Binding var hide: HNPane?
-        let id: String
         let currentURL: URL?
         
         @State var share = false
@@ -130,18 +159,18 @@ struct BenuseApp: App {
             }
         }
     }
-
+    
     var body: some Scene {
         WindowGroup {
             ZStack {
                 Color(UIColor.systemGray6).edgesIgnoringSafeArea(.all)
-                if id == nil {
+                if home == true {
                     VStack {
                         VStack {
                             Button(action: goHome) { Image(systemName: "apps.iphone.badge.plus")
                                 .font(.system(size: 50))
                             }.padding(20)
-                                .background(Color(UIColor.systemGray5)).clipShape(Circle())
+                            .background(Color(UIColor.systemGray5)).clipShape(Circle())
                         }
                         Spacer().frame(height: 20)
                         Text("Add the Benuse widget\nto your home screen.").multilineTextAlignment(.center).font(.system(.title))
@@ -152,7 +181,7 @@ struct BenuseApp: App {
                             ZStack {
                                 if hide != nil {Text("No story available.") }
                                 // this is a bad solution, but there's no good way to disable gestures dynamically. .simultaneousGesture(DragGesture()) is permanent
-                                WebView(webView: storyWVS.webView).opacity(hide ~= .story ? 0 : 1)
+                                WebView(webView: storyWVS.webView).opacity(hide ~= .story ? 0 : 1) // todo: swift 5 .refreshable()
                             }.tag(HNPane.story)
                             ZStack {
                                 if hide != nil { Text("No comments available for this item.") }
@@ -160,7 +189,11 @@ struct BenuseApp: App {
                             }.tag(HNPane.comments)
                             
                         }.tabViewStyle(PageTabViewStyle(indexDisplayMode: .never)).transition(.slide).animation(.easeInOut(duration: 1.2), value: pane)
-                        BottomMenuView(pane: $pane, hide: $hide, id: id!, currentURL: currentURL)
+                        .onAppear {
+                            storyWVS.webView.navigationDelegate = storyNavD
+                            commentsWVS.webView.navigationDelegate = commentsNavD
+                        }
+                        BottomMenuView(pane: $pane, hide: $hide, currentURL: currentURL)
                     }
                 }
             }.onOpenURL(perform: deepLink)

@@ -60,12 +60,12 @@ struct HNFeed {
 
 func getHNFeed(_ feed: Feed) -> HNFeed {
     switch feed {
-    case .unknown: return HNFeed(title: "Hacker News", apiPath: "topstories", path: "", color: .orange)
+    case .unknown: return getHNFeed(Feed.top)
     case .ask: return HNFeed(title: "Ask HN", apiPath: "askstories", path: "ask", color: .red)
     case .best: return HNFeed(title: "Best Stories", apiPath: "beststories", path: "best", color: .yellow)
     case .job: return HNFeed(title: "YC Jobs", apiPath: "jobstories", path: "jobs", color: .green)
     case .new: return HNFeed(title: "New Stories", apiPath: "newstories", path: "newest", color: .blue)
     case .show: return HNFeed(title: "Show HN", apiPath: "showstories", path: "show", color: .purple)
-    case .top: return HNFeed(title: "Top Stories", apiPath: "topstories", path: "", color: .orange)
+    case .top: return HNFeed(title: "Hacker News", apiPath: "topstories", path: "", color: .orange)
     }
 }
