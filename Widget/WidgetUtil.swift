@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import OpenGraph // TODO: should this be done here??
+import OpenGraph
 import SwiftUI
 
 func deepLink(story: HNStory, show pane: HNPane) -> URL {
@@ -16,17 +16,17 @@ func deepLink(story: HNStory, show pane: HNPane) -> URL {
     components.path = "/"
     components.queryItems = [URLQueryItem]()
     components.queryItems!.append(URLQueryItem(name: "id", value: String(story.id)))
-    if story.url != nil {components.queryItems!.append(URLQueryItem(name: "url", value: story.url!.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)))}
+    if story.url != nil { components.queryItems!.append(URLQueryItem(name: "url", value: story.url!.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed))) }
     components.queryItems!.append(URLQueryItem(name: "pane", value: pane.rawValue))
-    if story.type ~= .job {components.queryItems!.append(URLQueryItem(name: "hide", value: HNPane.comments.rawValue))}
+    if story.type ~= .job { components.queryItems!.append(URLQueryItem(name: "hide", value: HNPane.comments.rawValue)) }
     return components.url!
-//    return URL(string: "benuse://\(story.id)/\(showItem ? "item" : "comments")\(story.url != nil ? "?url=" + story.url!.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)! : "")")!
 }
 
-// this is the absolute worst because we have to hope things
-// won't take too long to load and can't async load in placeholder or view itself.
+// Loading via OpenGraph is a bit of a struggle because there is no
+// way to load widget content asynchronously and the library I'm using
+// doesn't support timeouts.
 func loadOG(story: HNStory, completion: @escaping (String?, Image?) -> Void) {
-//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) { // DEBUG
+//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) { // to demonstrate the above issue
 
     var site: String?, image: Image?
 

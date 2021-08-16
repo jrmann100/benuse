@@ -8,8 +8,8 @@
 import Foundation
 
 enum HNPane: String {
-    case story = "story"
-    case comments = "comments"
+    case story
+    case comments
 }
 
 enum HNAPIType: String, Codable {

@@ -23,6 +23,7 @@
 		175C639A266748BF00F47A58 /* WebView in Frameworks */ = {isa = PBXBuildFile; productRef = 175C6399266748BF00F47A58 /* WebView */; };
 		176EB9B9265B484900C54BD3 /* BenuseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176EB9A6265B484500C54BD3 /* BenuseApp.swift */; };
 		176EB9BD265B484900C54BD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 176EB9A8265B484800C54BD3 /* Assets.xcassets */; };
+		17CFC01726C9F3C8004E70A8 /* WebUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CFC01626C9F3C8004E70A8 /* WebUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		176EB9B0265B484900C54BD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		176EB9CD265B488100C54BD3 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		176EB9CF265B488100C54BD3 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		17CFC01626C9F3C8004E70A8 /* WebUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				176EB9A6265B484500C54BD3 /* BenuseApp.swift */,
+				17CFC01626C9F3C8004E70A8 /* WebUtil.swift */,
 				1709A641266099E500A5DBA2 /* Launch Screen.storyboard */,
 				176EB9A8265B484800C54BD3 /* Assets.xcassets */,
 				176EB9B0265B484900C54BD3 /* Info.plist */,
@@ -272,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17CFC01726C9F3C8004E70A8 /* WebUtil.swift in Sources */,
 				17025ECC269CE714002ADA04 /* Widget.intentdefinition in Sources */,
 				175916292662E165009E884D /* HNUtil.swift in Sources */,
 				176EB9B9265B484900C54BD3 /* BenuseApp.swift in Sources */,
