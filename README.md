@@ -36,6 +36,10 @@ To select different Hacker News feeds, edit the widget by long-pressing it as de
 - Features responsive layout with iPad compatibility.
 - Lightweight.
 
+## What do people think?
+
+Let's go check out [the discussion on Hacker News!](https://news.ycombinator.com/item?id=28215311)
+
 ## Do you have a cool demo video?
 
 As a matter of fact, I do! I recommend unmuting the [music](https://soundcloud.com/floorbaba/disappear).
