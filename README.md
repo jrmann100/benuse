@@ -1,4 +1,4 @@
-[<img align="center" src="https://user-images.githubusercontent.com/17690438/129804371-78c6c4be-4be0-4e45-83fa-93f510d6933b.png" width="200">](https://apps.apple.com/us/app/benuse/id1581388010)
+[<img align="center" src="https://user-images.githubusercontent.com/17690438/129847782-da363831-d42e-47b0-bb3f-1222cd4d316b.png" width="200">](https://apps.apple.com/us/app/benuse/id1581388010)
 
 # [Benuse](https://apps.apple.com/us/app/benuse/id1581388010), an iOS widget-based HN reader
 
